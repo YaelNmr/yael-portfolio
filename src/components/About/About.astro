@@ -1,0 +1,36 @@
+---
+import { PERSONAL_INFO } from "../../data/personal";
+import Section from "../UI/Section.astro";
+import Title from "../UI/Title.astro";
+import Badge from "../UI/Badge.astro";
+---
+
+<Section id="about" title="About Me">
+    <div class="max-w-4xl mx-auto">
+        <div class="flex flex-col gap-6" data-aos="fade-left">
+            <Title level={3}>
+                {PERSONAL_INFO.title}
+            </Title>
+            <p
+                class="text-lg md:text-xl text-gray-300 leading-relaxed font-light"
+            >
+                {PERSONAL_INFO.description}
+            </p>
+            <p
+                class="text-lg md:text-xl text-gray-300 leading-relaxed font-light"
+            >
+                {PERSONAL_INFO.journey}
+            </p>
+            <div class="flex flex-wrap gap-4 mt-4">
+                {
+                    PERSONAL_INFO.skills &&
+                        PERSONAL_INFO.skills.map((skill) => (
+                            <Badge class="px-4 py-2 bg-white/5 text-sm text-gray-400">
+                                {skill}
+                            </Badge>
+                        ))
+                }
+            </div>
+        </div>
+    </div>
+</Section>

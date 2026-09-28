@@ -1,0 +1,41 @@
+---
+import { PERSONAL_INFO } from "../../data/personal";
+import Section from "../UI/Section.astro";
+import Title from "../UI/Title.astro";
+---
+
+<Section id="contact" title="Get in Touch" titleClassName="mb-8">
+    <p
+        class="text-xl text-gray-400 mb-16 text-center max-w-2xl font-light"
+        data-aos="fade-up"
+        data-aos-delay="200"
+    >
+        I'm always open to new opportunities, collaborations, and conversations
+        about web development and game development.
+    </p>
+
+    <!-- Contact links -->
+    <div
+        class="flex flex-col sm:flex-row items-center justify-center gap-4"
+        data-aos="fade-up"
+        data-aos-delay="400"
+    >
+        {
+            PERSONAL_INFO.contactLinks &&
+                PERSONAL_INFO.contactLinks.map((link) => {
+                    const isEmail = link.href.startsWith("mailto:");
+
+                    return (
+                        <a
+                            href={link.href}
+                            target={isEmail ? undefined : "_blank"}
+                            rel={isEmail ? undefined : "noopener noreferrer"}
+                            class="px-6 py-3 rounded-2xl bg-[#140d7c] hover:bg-[#0f0a55] text-white font-semibold transition-all duration-200 drop-shadow-[3px_3px_0_#870deb] hover:translate-y-[-2px]"
+                        >
+                            {link.label}
+                        </a>
+                    );
+                })
+        }
+    </div>
+</Section>
